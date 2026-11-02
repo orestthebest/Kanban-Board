@@ -1,5 +1,6 @@
 <script>
 	import Lane from '$lib/components/Lane.svelte';
+	import IssueDialog from '$lib/components/IssueDialog.svelte';
 	import { loadIssues, saveIssues } from '$lib/storage.js';
 
 	const lanes = ['Do', 'Doing', 'Done', 'Archive'];
@@ -11,11 +12,18 @@
 	$effect(() => {
 		saveIssues(issues);
 	});
+
+	function addIssue(issue) {
+		issues.push(issue);
+	}
 </script>
 
-<header class="border-b border-stone-300 px-8 py-6">
-	<h1 class="font-serif text-3xl">Kanban Board</h1>
-	<p class="text-sm text-stone-500">Plan, move, finish.</p>
+<header class="flex items-center justify-between border-b border-stone-300 px-8 py-6">
+	<div>
+		<h1 class="font-serif text-3xl">Kanban Board</h1>
+		<p class="text-sm text-stone-500">Plan, move, finish.</p>
+	</div>
+	<IssueDialog onCreate={addIssue} />
 </header>
 
 <main class="grid grid-cols-1 gap-6 p-8 md:grid-cols-2 xl:grid-cols-4">

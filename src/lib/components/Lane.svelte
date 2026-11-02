@@ -1,4 +1,6 @@
 <script>
+	import IssueCard from './IssueCard.svelte';
+
 	let { title, issues } = $props();
 </script>
 
@@ -10,7 +12,7 @@
 
 	<div class="flex flex-col gap-3">
 		{#each issues as issue (issue.id)}
-			<p>{issue.title}</p>
+			<IssueCard {issue} />
 		{/each}
 	</div>
 </section>
