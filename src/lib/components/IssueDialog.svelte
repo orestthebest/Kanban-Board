@@ -47,7 +47,11 @@
 		<div class="flex gap-3">
 			<label class="flex-1">
 				Story points
-				<input name="points" type="number" min="1" value="1" class="mt-1 w-full rounded border-stone-300" />
+				<select name="points" class="mt-1 w-full rounded border-stone-300">
+					{#each [1, 2, 3, 5, 8, 13] as point (point)}
+						<option value={point}>{point}</option>
+					{/each}
+				</select>
 			</label>
 			<label class="flex-1">
 				Priority
