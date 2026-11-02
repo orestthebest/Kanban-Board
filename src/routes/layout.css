@@ -1,3 +1,12 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+/* Systemschrift, damit es auch offline funktioniert */
+@theme {
+	--font-serif: Georgia, 'Times New Roman', serif;
+}
+
+body {
+	@apply bg-stone-100 text-stone-800 antialiased;
+}
