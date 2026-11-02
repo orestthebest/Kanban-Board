@@ -1,6 +1,6 @@
 <script>
 	import { format, formatDistanceToNow, parseISO, isBefore, startOfToday } from 'date-fns';
-    import { exportIcs, shareIssue } from '$lib/export.js';
+    import { exportIcs, shareIssue } from '#lib/export.js';
 
 	let { issue } = $props();
 

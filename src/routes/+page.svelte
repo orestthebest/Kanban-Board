@@ -1,9 +1,9 @@
 <script>
-	import Lane from '$lib/components/Lane.svelte';
-	import IssueDialog from '$lib/components/IssueDialog.svelte';
-	import { loadIssues, saveIssues } from '$lib/storage.js';
-    import { notifyDone } from '$lib/notify.js';
-    import { exportCsv } from '$lib/export.js';
+	import Lane from '#lib/components/Lane.svelte';
+	import IssueDialog from '#lib/components/IssueDialog.svelte';
+	import { loadIssues, saveIssues } from '#lib/storage.js';
+	import { notifyDone } from '#lib/notify.js';
+	import { exportCsv } from '#lib/export.js';
 
 	const lanes = ['Do', 'Doing', 'Done', 'Archive'];
 
