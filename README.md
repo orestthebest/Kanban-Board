@@ -1,56 +1,66 @@
-# sv
+# Kanban Board
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A simple Kanban board built with SvelteKit, made as a school project for WAE (HTL, 5th year).
 
-## Creating a project
+**Live demo:** https://DEIN-LINK.vercel.app
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Features
 
-```sh
-# create a new project
-npx sv create my-app
+- 4 lanes: **Do**, **Doing**, **Done**, **Archive**
+- Create issues with a native HTML `<dialog>`
+- Each issue has a title, description, creation date, due date, story points and priority
+- Move issues with drag & drop (native Drag and Drop API, no library)
+- All issues and their lane are saved in `localStorage`
+- Sum of story points per lane
+- Visual warning for overdue issues
+- Browser notification when an issue is moved to **Done**
+- Export a single issue as a calendar event (`.ics`)
+- Share a single issue with the Web Share API
+- Export all issues as a CSV file
+- Installable as a PWA, works completely offline
+
+## Tech Stack
+
+- [SvelteKit](https://svelte.dev/docs/kit) (Svelte 5 with runes)
+- [Tailwind CSS](https://tailwindcss.com)
+- [date-fns](https://date-fns.org) for date formatting
+- Deployed on [Vercel](https://vercel.com)
+
+## Project Structure
+
+```
+src/
+├── lib/
+│   ├── components/
+│   │   ├── IssueCard.svelte    # one issue (draggable)
+│   │   ├── IssueDialog.svelte  # dialog to create an issue
+│   │   └── Lane.svelte         # one lane (drop zone, story point sum)
+│   ├── export.js               # ICS, CSV and Web Share
+│   ├── notify.js               # notification when done
+│   └── storage.js              # load and save in localStorage
+├── routes/
+│   ├── +layout.js              # ssr off, prerender on
+│   ├── +layout.svelte
+│   └── +page.svelte            # the board
+└── service-worker.js           # offline cache
+static/
+└── manifest.webmanifest        # PWA manifest
 ```
 
-To recreate this project with the same configuration:
+## Getting Started
 
-```sh
-# recreate this project
-npx sv@1.2.0 create --template minimal --no-types --add prettier eslint tailwindcss="plugins:typography,forms" --install npm .
-```
-
-## Adding features
-
-Add features to your project with `sv add`:
-
-```sh
-npx sv add
-```
-
-For example, to add Tailwind CSS:
-
-```sh
-npx sv add tailwindcss
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
+```bash
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+Production build (needed to test offline mode):
 
-To create a production version of your app:
-
-```sh
+```bash
 npm run build
+npm run preview
 ```
 
-You can preview the production build with `npm run preview`.
+## Author
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Orest Bashi
