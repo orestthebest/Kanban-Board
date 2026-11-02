@@ -2,6 +2,7 @@
 	import Lane from '$lib/components/Lane.svelte';
 	import IssueDialog from '$lib/components/IssueDialog.svelte';
 	import { loadIssues, saveIssues } from '$lib/storage.js';
+    import { notifyDone } from '$lib/notify.js';
 
 	const lanes = ['Do', 'Doing', 'Done', 'Archive'];
 
@@ -20,6 +21,12 @@
     // Move an issue to another lane
 	function moveIssue(id, lane) {
 		const issue = issues.find((i) => i.id === id);
+
+        // Only notify if it wasn't already in Done
+		if (lane === 'Done' && issue.lane !== 'Done') {
+			notifyDone(issue.title);
+		}
+
 		issue.lane = lane;
 	}
 </script>
