@@ -1,5 +1,6 @@
 <script>
 	import { format, formatDistanceToNow, parseISO, isBefore, startOfToday } from 'date-fns';
+    import { exportIcs, shareIssue } from '$lib/export.js';
 
 	let { issue } = $props();
 
@@ -46,4 +47,9 @@
 	<p class="mt-1 text-xs text-stone-400">
 		Created {formatDistanceToNow(parseISO(issue.created), { addSuffix: true })}
 	</p>
+
+    <div class="mt-3 flex gap-3 border-t border-stone-100 pt-2 text-xs text-stone-500">
+		<button onclick={() => exportIcs(issue)} class="hover:text-stone-800">Calendar (.ics)</button>
+		<button onclick={() => shareIssue(issue)} class="hover:text-stone-800">Share</button>
+	</div>
 </article>
