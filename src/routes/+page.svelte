@@ -33,7 +33,7 @@
 </header>
 
 <main class="grid grid-cols-1 gap-6 p-8 md:grid-cols-2 xl:grid-cols-4">
-	{#each lanes as lane}
+	{#each lanes as lane (lane)}
 		<Lane title={lane} issues={issues.filter((i) => i.lane === lane)} onDrop={moveIssue} />
 	{/each}
 </main>
