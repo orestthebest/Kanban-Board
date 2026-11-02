@@ -16,6 +16,12 @@
 	function addIssue(issue) {
 		issues.push(issue);
 	}
+
+    // Move an issue to another lane
+	function moveIssue(id, lane) {
+		const issue = issues.find((i) => i.id === id);
+		issue.lane = lane;
+	}
 </script>
 
 <header class="flex items-center justify-between border-b border-stone-300 px-8 py-6">
@@ -28,6 +34,6 @@
 
 <main class="grid grid-cols-1 gap-6 p-8 md:grid-cols-2 xl:grid-cols-4">
 	{#each lanes as lane}
-		<Lane title={lane} issues={issues.filter((i) => i.lane === lane)} />
+		<Lane title={lane} issues={issues.filter((i) => i.lane === lane)} onDrop={moveIssue} />
 	{/each}
 </main>
