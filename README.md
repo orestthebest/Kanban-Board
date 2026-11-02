@@ -2,7 +2,7 @@
 
 A simple Kanban board built with SvelteKit, made as a school project for WAE (HTL, 5th year).
 
-**Live demo:** https://DEIN-LINK.vercel.app
+**Live demo:** https://kanbanboard-dun.vercel.app/
 
 ## Features
 
